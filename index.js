@@ -9,7 +9,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({credentials:true,origin:"*"}))
+app.use(cors({credentials:true,origin:"https://classroom-client-nine.vercel.app"}))
 
 // Connect to MongoDB
 connectDB()
