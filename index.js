@@ -15,7 +15,7 @@ app.use(cors({credentials:true,origin:"*"}))
 connectDB()
 
 //port
-const port = 8000;
+const port = process.env.PORT||8000;
 
 app.use('/api',authRoute)
 app.use('/api',principalRoute)
