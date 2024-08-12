@@ -6,7 +6,6 @@ import Classroom from "../models/Classroom.js";
 
 export const signup = async (req, res) => {
   const { name, email, password, role, classroom } = req.body;
-  console.log(req.body);
   // Check if the role is valid
   if (!["principal", "teacher", "student"].includes(role)) {
     return res.status(400).send({ message: "Invalid role" });
@@ -38,20 +37,17 @@ export const signup = async (req, res) => {
     await user.save();
     res.send({ message: "Principle created successfully" });
   } catch (error) {
-    console.log(error);
     res.status(500).send({ message: "Error creating Principle" });
   }
 };
 
 export const login = async (req, res) => {
   const { email, password, role } = req.body;
-  console.log(email, password, role);
   const user = await User.findOne({ email });
   if (!user)
     return res.status(401).send({ message: "Invalid email or password" });
 
   const isValidPassword = await bcrypt.compare(password, user.password);
-  console.log(isValidPassword);
   if (!isValidPassword)
     return res.status(401).send({ message: "Invalid email or password" });
 

@@ -6,19 +6,15 @@ export const getStudents = async (req, res) => {
   try {
     
     const teacherId = req.params.id;
-    console.log(teacherId,"**************")
-
     const foundedTeacher = await User.findById(teacherId);
     if (!foundedTeacher) {
       return res.status(404).send("No teacher found");
     }
-    console.log(foundedTeacher)
 
     const students = await User.find({ classroomName: foundedTeacher.classroomName ,role:'student'});
 
     res.status(200).send(students);
   } catch (error) {
-    console.log(error)
     res.status(500).send("Server error");
   }
 };
@@ -28,8 +24,6 @@ export const getStudents = async (req, res) => {
 export const getClassrooms = async (req, res) => {
   try {
     const teacherId = req.params.id;
-    console.log(teacherId)
-
     const foundedTeacher = await User.findById(teacherId);
     if (!foundedTeacher) {
       return res.status(404).send("No teacher found");
@@ -39,7 +33,6 @@ export const getClassrooms = async (req, res) => {
 
     res.status(200).send(classroom);
   } catch (error) {
-    console.log(error)
     res.status(500).send("Server error");
   }
 };

@@ -6,10 +6,13 @@ import principalRoute from './routes/principle.js';
 import teacherRoute from './routes/teacher.js';
 import studentRoute from './routes/student.js';
 import cors from 'cors';
+import dotenv from 'dotenv';
+
+dotenv.config()
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({credentials:true,origin:"https://classroom-client-nine.vercel.app"}))
+app.use(cors({credentials:true,origin:process.env.FRONTEND_URL}))
 
 // Connect to MongoDB
 connectDB()

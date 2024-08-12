@@ -94,7 +94,6 @@ export const getAllStudents = async (req, res) => {
 
 export const createClassroom = async (req, res) => {
   try {
-    console.log(req.body);
     const { name, startTime, endTime, schedule,day } = req.body;
 
     // Validation (this can be extended as needed)

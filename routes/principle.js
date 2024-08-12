@@ -1,4 +1,3 @@
-import { assignClassRoomAndTeacher } from "../controllers/classroomController.js";
 import express from 'express';
 import { createClassroom, deleteClassroom, deleteStudent, deleteTeacher, editClassroom, editStudent, editTeacher, getAllClassrooms, getAllStudents, getAllTeachers } from "../controllers/principalController.js";
 import { authenticate, authorize } from "../middleware/auth.js";
@@ -16,8 +15,7 @@ principalRoute.put('/update-teacher/:id',authenticate,authorize(['principal']),e
 principalRoute.delete('/delete-student/:id',authenticate,authorize(['principal','teacher']),deleteStudent)
 principalRoute.put('/update-student/:id',authenticate,authorize(['principal','teacher']),editStudent)
 principalRoute.get('/get-students',authenticate,authorize(['principal']),getAllStudents)
-// Assigning student to teacher/classroom
-principalRoute.post('/assign-student', assignClassRoomAndTeacher);
+
 
 
 export default principalRoute

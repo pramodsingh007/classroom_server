@@ -1,12 +1,9 @@
-// middleware/auth.js
 import jwt from 'jsonwebtoken';
 import { secretKey } from '../config/index.js';
 
 export const authenticate = (req, res, next) => {
   try{
     const token = req.headers["authorization"].split(" ")[1];
-    
-    console.log(token)
     if (!token) return res.status(401).send({ message: 'No token provided' });
     
     jwt.verify(token, secretKey, (err, decoded) => {
