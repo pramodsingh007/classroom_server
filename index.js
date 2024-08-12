@@ -9,7 +9,7 @@ import cors from 'cors';
 
 const app = express();
 app.use(bodyParser.json());
-app.use(cors({credentials:true,origin:"http://localhost:5173"}))
+app.use(cors({credentials:true,origin:"*"}))
 
 // Connect to MongoDB
 connectDB()
